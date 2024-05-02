@@ -1,0 +1,27 @@
+{
+  "development": {
+    "database": "skripsi_yuni",
+    "username": "postgres",
+    "password": "dewa1234",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "skripsi_yuni_test",
+    "username": "postgres",
+    "password": "dewa1234",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "skripsi_yuni_production",
+    "username": "postgres",
+    "password": "dewa1234",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
+  
