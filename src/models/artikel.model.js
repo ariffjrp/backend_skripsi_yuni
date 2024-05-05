@@ -15,14 +15,14 @@ module.exports = (sequelize) => {
             primaryKey: true,
         },
         judul: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         kategori: {
             type: DataTypes.INTEGER,
         },
         deskripsi: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         tanggal: {
