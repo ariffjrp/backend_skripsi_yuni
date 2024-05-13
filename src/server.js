@@ -31,12 +31,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   dbSync();
 }
- 
-if (process.env.NODE_ENV === 'production') {
-  db.sequelize.sync();
-} else {
-dbSync();
-}
 
 const PORT = process.env.SERVER_PORT || 8080;
   
