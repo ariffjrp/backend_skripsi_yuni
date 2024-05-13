@@ -10,19 +10,21 @@ console.info('Running in', env, 'mode');
 
 let sequelize;
 
-if (env === 'test') {
-  sequelize = new Sequelize(
-    process.env.DB_DATABASE_TEST || config[env].database,
-    process.env.DB_USER_TEST || config[env].username,
-    process.env.DB_PASSWORD_TEST || config[env].password,
-    {
-      host: process.env.DB_HOST_TEST || config[env].host,
-      port: process.env.DB_PORT || config[env].port,
-      dialect: config[env].dialect,
-      logging: false,
-    },
-  );
+if (process.env.DB_URL) {
+  // Connection menggunakan DB_URL
+  sequelize = new Sequelize(process.env.DB_URL, {
+    dialect: 'postgres',  // Ganti dengan dialek yang sesuai dengan DBMS kamu
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true, // Sesuaikan dengan kebutuhan SSL
+        rejectUnauthorized: false // Sesuaikan dengan kebutuhan keamanan SSL
+      }
+    }
+  });
 } else {
+  // Fallback ke konfigurasi individual, tidak digunakan di Railway.
+  // Pastikan untuk menghapus atau tidak menyertakan bagian ini jika tidak digunakan sama sekali di produksi.
   sequelize = new Sequelize(
     process.env.DB_DATABASE || config[env].database,
     process.env.DB_USER || config[env].username,
